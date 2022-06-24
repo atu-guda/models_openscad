@@ -1,16 +1,16 @@
 // axis from stepmotor to M4
-d1i = 5.2;
+d1i = 5.0 + 1.0;
 r1i = d1i/2;
 r1o = r1i + 2.5;
 h1i = 6.0;
 h1o = 6.0;
 
-r2i = 3.6/2; // for M4 thread
+r2i = (3.5+0.6)/2; // for M4 thread
 r2o = r1o; // r2i + 2.2;
-h2 = 8;
+h2 = 6;
 
-shi = 3.2 / 2;
-nut_r = 8.0/2;
+shi = (3.2+1.0) / 2; // shift for removed parts
+nut_r = (8.0+1.0)/2;
 nut_h = 3.2;
 
 $fn=20;
@@ -25,7 +25,10 @@ union() {
 
   }
   difference() {
-    cylinder( h=h1o, r=r1o );
+    union() {
+      cylinder( h=h1o, r=r1o );
+      cylinder( h=0.8, r=1.6*r1o );
+    }
     difference() {
       cylinder( h=h1i, r=r1i );
       translate([    shi,-5,0]) cube([10,10,h1i]);
