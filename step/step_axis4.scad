@@ -15,51 +15,15 @@ nut_h = 3.2;
 
 $fn=20;
 
-supp_w = 0.5;
 
-module supp_31( w, h, alp )
-{
-  rotate([90,0,alp]) linear_extrude( supp_w )
-    polygon([ [-0.05*w,0], [w,0], [-0.05*w,h] ]);
-}
-
-module supp_34( w, h, r0 )
-{
-  translate([ r0,  0, 0]) supp_31(w,h,  0);
-  translate([-r0,  0, 0]) supp_31(w,h,180);
-  translate([  0, r0, 0]) supp_31(w,h, 90);
-  translate([  0,-r0, 0]) supp_31(w,h,-90);
-}
-
-module supp_34d( w, h, r0 )
-{
-  union() {
-    cylinder( h=supp_w, r=1.6*r0 ); // agdession
-    supp_34( w, h, r0 );
-  }
-}
-
-
-module nut6_place( r, h )
-{
-  linear_extrude( h )
-    polygon( [ for (a = [0 : 60 : 359]) [ r * sin(a), r * cos(a) ] ] );
-}
+include <atu_supports.scad>
+include <atu_nut_axis.scad>
 
 module nut_m4_place()
 {
   nut6_place( (8.0+0.8)/2, 3.2 );
 }
 
-module chamfered2_axle( r, l, th )
-{
-  th2 = th/2.0;
-  difference() {
-    cylinder( r=r, h=l );
-    translate([th2,-r,0]) cube([r,2*r,l]);
-    translate([-th2-r,-r,0]) cube([r,2*r,l]);
-  }
-}
 
 
 union() {
