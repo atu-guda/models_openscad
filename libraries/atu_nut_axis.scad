@@ -1,3 +1,5 @@
+nut_m4_r = 4.0;
+nut_m4_h = 3.2;
 
 
 module nut6_place( r, h )
@@ -20,3 +22,4 @@ module chamfered2_axle( r, l, th )
     translate([-th2-r,-r,0]) cube([r,2*r,l]);
   }
 }
+

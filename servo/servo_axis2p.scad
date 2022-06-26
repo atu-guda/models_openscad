@@ -14,26 +14,26 @@ bracing_z = 16;
 
 hole_r = 1.1;
 
-nut_r = 8.1/2;
-nut_h = 3.2;
-
-
 $fn=25;
+
+include <atu_nut_axis.scad>
+
+nut_r = (nut_m4_r+0.1)/2;
+nut_h = nut_m4_h;
 
 module servo_axis()
 {
   difference() {
     union() {
-      cylinder( h=h1o, r=r1o );
-      translate( [0,0,h1o] ) cylinder( h=h2, r=r2o );
-      translate( [0,0,h1o+1] ) cylinder( h=3, r=8.0 );
+      cylinder( h=h1o, r=r1o ); // servo part cylinder
+      translate( [0,0,h1o] ) cylinder( h=h2, r=r2o ); // nut part cylinder
+      translate( [0,0,h1o+1] ) cylinder( h=3, r=8.0 ); // cental forcing cylinder
+      // mounting plates
       translate( [-bracing_x/2,-bracing_y/2,0] ) cube( [bracing_x,bracing_y,bracing_z] );
-      //translate( [-bracing_x/2,-bracing_y/2,h2+h1o-bracing_z] ) cube( [bracing_x,bracing_y,bracing_z] );
     }
-    cylinder( h=h1o + h2, r=r2i );
-    cylinder( h=h1i, r=r1i );
-    translate([0,0,h1o+h2-nut_h+0.1]) linear_extrude(nut_h)
-    polygon( [ for (a = [0 : 60 : 359]) [ nut_r * sin(a), nut_r * cos(a) ] ] );
+    cylinder( h=h1o + h2, r=r2i ); // main hole
+    cylinder( h=h1i, r=r1i );      // servo axis hole
+    translate([0,0,h1o+h2-nut_h+0.1]) nut6_place( nut_r, nut_h );
     translate([(bracing_x-hole_r-2.6)/2,0,(bracing_y-1.2)/2])
       rotate([-90,0,0]) cylinder( bracing_z, r=hole_r );
     translate([(-bracing_x+hole_r+2.6)/2,0,(bracing_y-1.2)/2])
@@ -50,5 +50,6 @@ difference() {
     rotate([90,0,0]) servo_axis();
     translate([20,0,0]) rotate([90,0,0]) servo_axis();
   }
-  translate([-10,-18,-10]) cube([45,20,10]);
+  translate([-10,-18,-8.2]) cube([40,20,8]);
 }
+
