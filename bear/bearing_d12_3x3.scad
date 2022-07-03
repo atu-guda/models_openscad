@@ -1,10 +1,10 @@
-// holder for M4 bearing with 3x3 plate
+// holder for 12 bearing with 3x3 plate
 $fn = 20;
-d_o = 13.0 + 0.6;
-d_o1 = 9;
+d_o = 12.0 + 0.6;
+d_o1 = 12.0+0.4;
 r_ho = 2.0;
 
-z_b = 5;
+z_b = 9;
 z_1 = 1.0 + 0.6;
 z_a = z_b + z_1;
 

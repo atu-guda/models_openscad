@@ -50,6 +50,6 @@ difference() {
     rotate([90,0,0]) servo_axis();
     translate([20,0,0]) rotate([90,0,0]) servo_axis();
   }
-  translate([-10,-18,-8.2]) cube([40,20,8]);
+  translate([-10,-18,-8.8]) cube([40,20,8]);
 }
 

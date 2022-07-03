@@ -10,14 +10,17 @@ h2 = 8;
 ha = h1 + h2;
 
 shi = (3.0+0.6); // width of flat axis part
-nut_r = (8.0+0.8)/2;
+nut_r = (8.0+0.6)/2;
 nut_h = 3.2;
 
 $fn=20;
 
 
+
 include <atu_supports.scad>
 include <atu_nut_axis.scad>
+
+supp_w = 0.5 + 0.6;
 
 module nut_m4_place()
 {
