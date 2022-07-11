@@ -1,15 +1,15 @@
 // half-holder for bearing from HDD
 $fn = 20;
-d_o = 12;
-d_o1 = 7;
-r_ho = 1.7;
+d_o = 12 + 0.6;
+// d_o1 = 7;
+r_ho = 2.2;
 
-z_b = 4;
-z_1 = 1;
+// z_b = 4;
+// z_1 = 1;
 z_a = 10;
 
 x_1 = 30;
-y_1 =  8;
+y_1 = 10;
 
 module bearing_hbox()
 {
@@ -27,5 +27,7 @@ module bearing_hbox()
 }
 
 bearing_hbox();
+
+translate([0,y_1+6,0]) bearing_hbox();
 
 
