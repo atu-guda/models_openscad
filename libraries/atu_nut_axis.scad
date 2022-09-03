@@ -1,5 +1,7 @@
 nut_m4_r = 4.0;
 nut_m4_h = 3.2;
+nut_m4_s = 7.0;
+nut_m4_e = 7.66;
 
 
 module nut6_place( r, h )
