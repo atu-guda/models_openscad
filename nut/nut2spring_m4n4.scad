@@ -5,13 +5,13 @@ include <atu_nut_axis.scad>
 
 x_sp = 12.0; // spring length
 x_w  =  2.0; // x-wall length
-x_a  = x_sp + x_w + 2 * nut_m4_h;
+x_a  = x_sp + 2 * x_w + 2 * nut_m4_h;
 
 y_w  = 2.0;
 y_a  = 2 * y_w + nut_m4_s;
 y_c  = y_a / 2;
 
-z_w  = 1.0;
+z_w  = 2.0;
 z_a  = nut_m4_e + 1.0 * z_w + nut_m4_h;
 z_c  = nut_m4_e / 2.0 + z_w;
 

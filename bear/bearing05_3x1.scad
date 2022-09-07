@@ -1,6 +1,6 @@
 // holder for M5 bearing with 3x4 plate
 $fn = 20;
-d_o = 15.0 + 0.6;
+d_o = 16.0 + 0.4;
 d_o1 = 10.0;
 r_ho = 2.1;
 
@@ -25,15 +25,15 @@ module bearing_box()
     translate([0,0,z_1])
       cylinder(h=z_b, r = d_o/2.0, center = true );
     translate([0,0,z_1])
-      cylinder(h=2*z_a, r = d_o1/2.0, center = true );    
-    
+      cylinder(h=2*z_a, r = d_o1/2.0, center = true );
+
     m_hole( -1, -1 );
     m_hole( -1,  1 );
     m_hole(  1, -1 );
     m_hole(  1,  1 );
     // m_hole(  0,  1 );
   }
-  
+
 }
 
 bearing_box();
