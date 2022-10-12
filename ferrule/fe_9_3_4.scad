@@ -1,9 +1,9 @@
 //  ferrule from stepmotor with gear to M4
 d_1 = 9.0;
-r1i = (d_1+0.6)/2;
+r1i = (d_1+0.0)/2;
 r1o = r1i + 2.0;
-h1i = 5.0;
-h1o = 6.0;
+h1i = 7.0;
+h1o = 7.0;
 
 r2i = (3.5+0.6)/2;
 r2o = r1o;
