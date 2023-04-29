@@ -22,5 +22,5 @@ difference() {
   linear_extrude( height=l_tot,  scale=0.0 )
     translate([-x_0/2,-y_0/2]) square( [x_0,y_0]);
   cylinder( r=r_1, h=l_tot );
-  translate([-30,-30,l_b]) cube([60,60,60]);
+  translate([-30,-30,20]) cube([60,60,60]);
 }
