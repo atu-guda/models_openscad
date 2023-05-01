@@ -6,4 +6,5 @@
 *.gcode
 .*.swp
 servo_ext
+libs/*
 
