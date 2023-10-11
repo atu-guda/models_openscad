@@ -9,7 +9,7 @@ r_hv   = 3.0   / 2 + 0.1;   // vert mounting hole
 
 x_a =  80;
 y_a =  28;
-z_a =  10;
+z_a =  12;
 
 x_1 =  10.0;
 x_2 = x_a - x_1;
