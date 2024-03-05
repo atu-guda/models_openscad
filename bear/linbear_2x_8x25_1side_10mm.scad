@@ -26,12 +26,17 @@ d_m = 8 / sqrt(2.0);
 
 $fn=25;
 
-module lbe_ho_2x_8x25_1side_10mm()
+module lbe_ho_2x_8x25_1side_12mm()
 {
   difference() {
     union() {
       cube( [x_a,y_a,z_a] );
+      translate([ -1,16,0])cube( [3,2,z_a+4] );
+      translate([ x_a-2,16,0])cube( [3,2,z_a+4] );
+      translate([ -8,3,0]) cube( [8,8,z_a] );
     }
+    // for sensor
+    #translate([ -4,7,0]) cylinder( r=3, h=z_a );
     // place for bearing
     translate([ x_1+r_out- 1,y_c-y_w/2,0]) cube( [13,2.0,z_a] );
     translate([ x_1+r_out+10,y_c-y_w/2,0]) cube( [2.0,10.0,z_a] );
@@ -41,21 +46,22 @@ module lbe_ho_2x_8x25_1side_10mm()
     translate([ x_2,y_c,0]) cylinder( r=r_out, h=z_a );
     translate([ x_c,y_c,0]) cylinder( r=6.0,  h=z_a );
     // mounting holes
-    translate([ x_1   ,0,z_c]) rotate([-90,0,0])  cylinder( r=r_h-0.3, h=y_c );
-    translate([ x_1+12,0,z_c]) rotate([-90,0,0])  cylinder( r=r_h    , h=y_a );
-    translate([ x_2   ,0,z_c]) rotate([-90,0,0])  cylinder( r=r_h-0.3, h=y_c );
-    translate([ x_2-12,0,z_c]) rotate([-90,0,0])  cylinder( r=r_h    , h=y_a );
-    translate([ x_c   ,0,z_c]) rotate([-90,0,0])  cylinder( r=r_h-0.3, h=y_c );
-    translate([ x_c-d_m,y_c-d_m,0]) cylinder( r=r_hv, h=y_a );
-    translate([ x_c-d_m,y_c+d_m,0]) cylinder( r=r_hv, h=y_a );
-    translate([ x_c+d_m,y_c-d_m,0]) cylinder( r=r_hv, h=y_a );
-    translate([ x_c+d_m,y_c+d_m,0]) cylinder( r=r_hv, h=y_a );
+    translate([   5,    0, z_c]) rotate([-90,0,0])  cylinder( r=r_h-0.3, h=y_c );
+    translate([ x_1+12, 0, z_c]) rotate([-90,0,0])  cylinder( r=r_h    , h=y_a );
+    translate([  x_a-5, 0, z_c]) rotate([-90,0,0])  cylinder( r=r_h-0.3, h=y_c );
+    translate([ x_2-12, 0, z_c]) rotate([-90,0,0])  cylinder( r=r_h    , h=y_a );
+    translate([ x_c   , 0 ,z_c]) rotate([-90,0,0])  cylinder( r=r_h-0.3, h=y_c );
+    // nut mounting holes
+    translate([ x_c-d_m, y_c-d_m, 0 ]) cylinder( r=r_hv, h=z_a );
+    translate([ x_c-d_m, y_c+d_m, 0 ]) cylinder( r=r_hv, h=z_a );
+    translate([ x_c+d_m, y_c-d_m, 0 ]) cylinder( r=r_hv, h=z_a );
+    translate([ x_c+d_m, y_c+d_m, 0 ]) cylinder( r=r_hv, h=z_a );
   }
 }
 
 //translate([ 0,-4,0]) cube( [x_1,1,1] );
 //projection(cut = true)
-lbe_ho_2x_8x25_1side_10mm();
+lbe_ho_2x_8x25_1side_12mm();
 echo( "x_a= ", x_a, "y_a= ", y_a, "z_a= ", z_a );
 echo( "x1= ", x_1, "x_2=", x_2, " dx= ", dx );
 
