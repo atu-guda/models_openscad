@@ -70,10 +70,22 @@ module vtx_01()
   }
 
   color("gray") translate([0,-y_v1/2,h_sink+h_air+h_board]) cube([x_v,y_v1,h_sink]);
+
   echo( "z_main= ", z_main );
   color("gray") translate([x_v/2,-y_v1/2,z_main]) cube([x_v/2,y_v1,z_v2]); // cooler
   color("gold") translate([x_v,0,z_board-2])
     rotate( [0,90,0] ) cylinder( r=3, h=10 ); // SMA
+}
+
+module stand_mount( x, y, z )
+{
+  union() {
+    translate([-x/2,-y/2,0]) {
+      cube([x,y,z]);
+      translate([x,y/2,0]) supp_xywra( x/2, z, y, 1.5, 0 );
+      translate([0,y/2,0]) supp_xywra( x/2, z, y, 1.5, 180 );
+    }
+  }
 }
 
 module vtx_holder_01()
@@ -87,16 +99,14 @@ module vtx_holder_01()
       translate([-x_c_vtx-w_1/2,-l_d1,  0]) cube([w_1,l_d2,h_0]); // between cylinders
       translate([-x_c_vtx,-y_1/2,h_1]) cube([x_1,y_1,z_1]);  // main plate
 
-      translate([10-3,-18,h_1+z_1]) cube([6,6,5.5]);
-      translate([10-3, 12,h_1+z_1]) cube([6,6,5.5]);
-      translate([40-3,-18,h_1+z_1]) cube([6,6,5.5]);
-      translate([40-3, 12,h_1+z_1]) cube([6,6,5.5]);
-      translate([10+3,-15,h_1+z_1]) supp_xywra( 4, 5.5, 6, 1.5, 0 );
-      translate([10+3, 15,h_1+z_1]) supp_xywra( 4, 5.5, 6, 1.5, 0 );
-      translate([40+3,-15,h_1+z_1]) supp_xywra( 4, 5.5, 6, 1.5, 0 );
-      translate([40+3, 15,h_1+z_1]) supp_xywra( 4, 5.5, 6, 1.5, 0 );
-      translate([40-3,-15,h_1+z_1]) supp_xywra( 4, 5.5, 6, 1.5, 180 );
-      translate([40-3, 15,h_1+z_1]) supp_xywra( 4, 5.5, 6, 1.5, 180 );
+      translate([10-3,-18,h_1+z_1]) cube([x_t,y_t,5.5]);
+      translate([10-3, 12,h_1+z_1]) cube([x_t,y_t,5.5]);
+      translate([40-3,-18,h_1+z_1]) cube([x_t,y_t,5.5]);
+
+      translate([10,-15,h_1+z_1]) stand_mount(x_t,y_t,5.5);
+      translate([10, 15,h_1+z_1]) stand_mount(x_t,y_t,5.5);
+      translate([40,-15,h_1+z_1]) stand_mount(x_t,y_t,5.5);
+      translate([40, 15,h_1+z_1]) stand_mount(x_t,y_t,5.5);
 
       translate([-7,-l_d1-1.5,z_1]) supp_xywra( 15, h_0-z_1-1, 2, 1.3, 0 );
       translate([-7, l_d1+1.5,z_1]) supp_xywra( 15, h_0-z_1-1, 2, 1.3, 0 );
