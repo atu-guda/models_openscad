@@ -38,6 +38,7 @@ h_1 =  0; // from frame to bottom plane
 x_2 = x_v  + xg_1_1 + xg_1_2;
 y_2 = y_v1 + 2 * yg_1;
 
+z_stand = 5.5;
 d_mhole = 3.0; // really more, but for thread
 
 module tag_mount( x, y, z, dia )
@@ -99,17 +100,15 @@ module vtx_holder_01()
       translate([-x_c_vtx-w_1/2,-l_d1,  0]) cube([w_1,l_d2,h_0]); // between cylinders
       translate([-x_c_vtx,-y_1/2,h_1]) cube([x_1,y_1,z_1]);  // main plate
 
-      translate([10-3,-18,h_1+z_1]) cube([x_t,y_t,5.5]);
-      translate([10-3, 12,h_1+z_1]) cube([x_t,y_t,5.5]);
-      translate([40-3,-18,h_1+z_1]) cube([x_t,y_t,5.5]);
+      translate([10,-15,h_1+z_1]) stand_mount(x_t,y_t,z_stand);
+      translate([10, 15,h_1+z_1]) stand_mount(x_t,y_t,z_stand);
+      translate([40,-15,h_1+z_1]) stand_mount(x_t,y_t,z_stand);
+      translate([40, 15,h_1+z_1]) stand_mount(x_t,y_t,z_stand);
 
-      translate([10,-15,h_1+z_1]) stand_mount(x_t,y_t,5.5);
-      translate([10, 15,h_1+z_1]) stand_mount(x_t,y_t,5.5);
-      translate([40,-15,h_1+z_1]) stand_mount(x_t,y_t,5.5);
-      translate([40, 15,h_1+z_1]) stand_mount(x_t,y_t,5.5);
-
-      translate([-7,-l_d1-1.5,z_1]) supp_xywra( 15, h_0-z_1-1, 2, 1.3, 0 );
-      translate([-7, l_d1+1.5,z_1]) supp_xywra( 15, h_0-z_1-1, 2, 1.3, 0 );
+      // translate([-7,-l_d1-1.5,z_1]) supp_xywra( 15, h_0-z_1-1, 2, 1.3, 0 );
+      // translate([-7, l_d1+1.5,z_1]) supp_xywra( 15, h_0-z_1-1, 2, 1.3, 0 );
+      translate([-8,  l_d1+0.5,z_1]) cube( [14.4,3,h_0-z_1-2] );
+      translate([-8, -l_d1-3.5,z_1]) cube( [14.4,3,h_0-z_1-2] );
 
       translate([-2,-l_d1-2.5,z_1]) supp_xywra( 2.0, 1.5, 14.0, 1.5, 270 );
       translate([-2,+l_d1+2.5,z_1]) supp_xywra( 2.0, 1.5, 14.0, 1.5,  90 );
@@ -122,6 +121,7 @@ module vtx_holder_01()
     translate([-3,-y_2/2,h_1]) cube([x_2,y_2,3*z_1]);  // hole in main plate
     translate([-12,0,15]) rotate([0,90,0]) cylinder( h = w_1+1, r = 9 ); // hole in the wall
     // translate([-12,0,h_0-3]) rotate([0,90,0]) cylinder( h = w_1+1, r = 1.0 ); // small hole in the wall
+    translate([5,19,24]) rotate([90,0,0]) cylinder( h = y_v2, r = 1.0 ); 
 
     translate([10,-15,h_1]) cylinder( d=d_mhole, h=3*z_1 ); // small mounting holes
     translate([10, 15,h_1]) cylinder( d=d_mhole, h=3*z_1 );
@@ -133,5 +133,5 @@ module vtx_holder_01()
 
 vtx_holder_01();
 
-vtx_01();
+// vtx_01();
 
