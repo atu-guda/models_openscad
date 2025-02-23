@@ -21,10 +21,10 @@ module trinket_body(thicknes, tittle)
   }
 }
 
-trinket_body(4,"ITC");
+trinket_body(3,"ITC");
 
-translate([0,25,0]) trinket_body(4,"ITC");
-translate([0,50,0]) trinket_body(4,"ITC");
+translate([0,25,0]) trinket_body(3,"ITC");
+translate([0,50,0]) trinket_body(3,"ITC");
 
 
 

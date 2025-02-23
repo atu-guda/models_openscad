@@ -3,12 +3,13 @@ h  = 8.0; // like lego
 hm = h+0.1; // for better holes
 
 r1 = 2.5;
+r2 = 2.3;
 
 // X
 L0L = 39.0;  L0R = 19.0; L0 = L0L + L0R; // outer
 L1L = 37.6;  L1R = 17.9; L1 = L1L + L1R; // servo dimensions - unused
 L2L = 34.0;  L2R = 15.0; L2 = L2L + L2R; // mounting holes
-L3L = 30.1;  L3R = 10.4; L3 = L3L + L3R; // inner hole
+L3L = 31.1;  L3R = 11.4; L3 = L3L + L3R; // inner hole
 Lm = 7.8; // mounting extra
 
 //
@@ -33,10 +34,15 @@ difference() {
     translate([ -L3L+Lm,  W2_2-1.4, 0]) rotate([0,0,45]) cube([2,2,h]);
   }
   translate([-L3L,-W1_2,-0.05]) cube([L3,W1,hm]);
-  translate([-L2L,-5.0,-0.05]) cylinder( r=r1, h=hm );
-  translate([-L2L, 5.0,-0.05]) cylinder( r=r1, h=hm );
-  translate([ L2R,-5.0,-0.05]) cylinder( r=r1, h=hm );
-  translate([ L2R, 5.0,-0.05]) cylinder( r=r1, h=hm );
+  translate([-L2L,-5.0,-0.05]) cylinder( r=r2, h=hm );
+  translate([-L2L, 5.0,-0.05]) cylinder( r=r2, h=hm );
+  translate([ L2R,-5.0,-0.05]) cylinder( r=r2, h=hm );
+  translate([ L2R, 5.0,-0.05]) cylinder( r=r2, h=hm );
   translate([ -L0L, 20.0, h/2]) rotate([0,90,0]) cylinder( r=r1, h=L0 );
   translate([ -L0L,-20.0, h/2]) rotate([0,90,0]) cylinder( r=r1, h=L0 );
+  // hole for wires durind mouting
+  translate([ L3R-2,-0, -0.05]) cylinder( r=5.5, h=hm );
+  // indicator
+  translate([ 0,-15, h-1]) cylinder( r=0.5, h=2 );
+  
 }
