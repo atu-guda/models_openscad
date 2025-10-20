@@ -8,12 +8,12 @@ w = 1.5;
 r_e  = 19.5; // encoder case radius
 rr_1 = 15.0; // first mounting ring (30)
 rr_2 = 14.0; // second mounting ring (28)
-r_c = 11.4; // central encoder hole
+r_c  = 10.1; // central encoder hole
 
 rm1 = 2.2; // external mounting holes
-rm2 = 1.7; // encoder mouting holes
+rm2 = 2.0; // encoder mouting holes
 
-x0 = 20.0;
+x0 = 21.0;
 x1 = x0 + 0;
 y0 = 20.0;
 y1 = y0 + h1/2;
@@ -43,11 +43,13 @@ difference() {
   
   translate([0,0,-0.05]) cylinder( r = r_c, h=hm );
   // encoder mouting holes
-  for( phi=[0:60:360] ) {
-    translate([rr_1*cos( phi ),rr_1*sin( phi ),-0.05]) cylinder( r = rm2, h=hm );
-  }
   for( phi=[30:60:360] ) {
+    translate([rr_1*cos( phi ),rr_1*sin( phi ),-0.05]) cylinder( r = rm2, h=hm );
+    //#translate([rr_1*cos( phi ),rr_1*sin( phi ),0.5]) cylinder( r = 0.2, h=5 );
+  }
+  for( phi=[ 0:60:360] ) {
     translate([rr_2*cos( phi ),rr_2*sin( phi ),-0.05]) cylinder( r = rm2, h=hm );
+    // #translate([rr_2*cos( phi ),rr_2*sin( phi ),0.5]) cylinder( r = 0.2, h=5 );
   }
   
   // main mounting holes

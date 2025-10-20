@@ -7,4 +7,4 @@
 .*.swp
 servo_ext
 libs/*
-
+.directory

@@ -19,10 +19,10 @@ module supp_34( w, h, r0 )
 }
 
 // support with disk
-module supp_34d( w, h, r0 )
+module supp_34d( w, h, r0, k_r1 = 1.2 )
 {
   union() {
-    cylinder( h=supp_w, r=1.6*r0 ); // agdession
+    cylinder( h=supp_w, r=r0+w*k_r1 ); // adgession
     supp_34( w, h, r0 );
   }
 }
