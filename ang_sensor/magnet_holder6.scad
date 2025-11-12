@@ -17,5 +17,6 @@ difference() {
   }
   translate([0,0,-ov]) cylinder( h=h_mag, r=r_mag );
   translate([0,0,h_mag+h_mid+ov]) cylinder( h=h_axis, r=r_axis );
+  translate([0,0,-ov]) cylinder( h=h_all+2-ov, r=0.8 );
 }
 
