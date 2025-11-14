@@ -7,4 +7,6 @@
 .*.swp
 servo_ext
 libs/*
+cfg/*
 .directory
+
