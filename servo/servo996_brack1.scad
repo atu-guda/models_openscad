@@ -40,8 +40,16 @@ difference() {
   translate([ L2R, 5.0,-0.05]) cylinder( r=r2, h=hm );
   translate([ -L0L, 20.0, h/2]) rotate([0,90,0]) cylinder( r=r1, h=L0 );
   translate([ -L0L,-20.0, h/2]) rotate([0,90,0]) cylinder( r=r1, h=L0 );
+  // space for nuts
+  translate([ -L0L-0.05,-20.0, h/2]) rotate([0,90,0]) cylinder( r=5.2, h=8.0 );
+  translate([ -L0L-0.05, 20.0, h/2]) rotate([0,90,0]) cylinder( r=5.2, h=8.0 );
+  translate([        Lm,-20.0, h/2]) rotate([0,90,0]) cylinder( r=5.2, h=12.0 );
+  translate([        Lm, 20.0, h/2]) rotate([0,90,0]) cylinder( r=5.2, h=12.0 );
+  // long central hole
+  translate([ -L0L-0.05,  0.0, h/2]) rotate([0,90,0]) cylinder( r=1.8, h=L0+0.1 );
   // hole for wires durind mouting
-  translate([ L3R-2,-0, -0.05]) cylinder( r=5.5, h=hm );
+  //translate([ L3R-2,-0, -0.05]) cylinder( r=5.5, h=hm );
+  translate([ L3R-0.05, -4.5, -0.05]) cube( [4,9,hm] );
   // indicator
   translate([ 0,-15, h-1]) cylinder( r=0.5, h=2 );
   
