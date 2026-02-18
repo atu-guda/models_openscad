@@ -1,4 +1,5 @@
 
+ov = 0.05;
 S = 8.0; // strud
 H = 7.8; // height on main hole direction
 W = 7.6; // width on opposite direction
@@ -28,7 +29,7 @@ $fn=32;
 module z_hole()
 {
   union() {
-    cylinder( r=R1, h = H );
+    cylinder( r=R1, h = H+2*ov );
     cylinder( r=R2, h = 0.6 );
     translate( [0,0,H-0.6]) cylinder( r=R2, h = 0.6 );
   }
@@ -61,7 +62,7 @@ difference() {
   
   //translate([L1,H,H/2]) rotate([90,0,0]) cylinder( r=R1, h = H );
   translate([L1,-0.01,H/2]) y_hole();
-  translate([L2,L1,0]) z_hole();
+  translate([L2,L1,-ov]) z_hole();
   translate([L3,-0.01,H/2]) y_hole();
   translate([L1,y_all-H+0.02,H/2]) y_hole();
   translate([L2,y_all-H+0.02,H/2]) y_hole();

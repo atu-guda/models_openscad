@@ -8,8 +8,8 @@
 $fn= 43;
 
 /* [Extrusion:] */
-$EC= 0.3;  // Extrusion Correction
-$PC= 0.01; // Preview Coincient surface adjustment
+EC= 0.3;  // Extrusion Correction
+PC= 0.01; // Preview Coincient surface adjustment
 
 // Hole sequence.
 // . = pinhole
@@ -35,8 +35,8 @@ LegoBeam( "+o!xX*.-O3489+" );
 
 module LegoBeam( Model ) {
   SegLen     = 8;            // [1:1:50]
-  R1         = 2.5 + $EC/2;
-  R2         = 3.05 + $EC/2;
+  R1         = 2.5 + EC/2;
+  R2         = 3.05 + EC/2;
   Height     = 7.8;          // [4.0,7.8];
   Depth      = 0.85;
   Width      = 7.3;
@@ -47,7 +47,7 @@ module LegoBeam( Model ) {
   R_M4       = 1.9;
   rot_h = [90,0,0];
 
-  difference(Model) {
+  difference() {
     Body();
 
     for (i = [0:len(Model)-1]) {
@@ -155,16 +155,16 @@ module LegoBeam( Model ) {
   // Generate Round Hole
   module Hole() {
 
-    cylinder(r=R1+$EC/2,h=Height);
+    cylinder(r=R1+EC/2,h=Height);
 
-    translate([0,0,Height-Depth+$PC])
-      cylinder(r=R2+$EC/2,h=Depth);
+    translate([0,0,Height-Depth+PC])
+      cylinder(r=R2+EC/2,h=Depth);
 
-    translate([0,0,-$PC/2])
-      cylinder(r=R2+$EC/2,h=Depth);
+    translate([0,0,-PC/2])
+      cylinder(r=R2+EC/2,h=Depth);
 
-    translate([0,0,Depth-$PC])
-      cylinder(h=(R2 - R1), r1=R2+$EC/2, r2=R1+$EC/2);
+    translate([0,0,Depth-PC])
+      cylinder(h=(R2 - R1), r1=R2+EC/2, r2=R1+EC/2);
   }
 
 
@@ -172,22 +172,22 @@ module LegoBeam( Model ) {
   // Generate Round PinHole
   module PinHole() {
 
-    translate([0,0,-$PC/2])
-      cylinder(r=PinHoleR+$EC/2,h=Height+$PC);
+    translate([0,0,-PC/2])
+      cylinder(r=PinHoleR+EC/2,h=Height+PC);
 
   }
 
   module Hole_M3() {
 
-    translate([0,0,-$PC/2])
-      cylinder(r=R_M3+$EC/2,h=Height+$PC);
+    translate([0,0,-PC/2])
+      cylinder(r=R_M3+EC/2,h=Height+PC);
 
   }
 
   module Hole_M4() {
 
-    translate([0,0,-$PC/2])
-      cylinder(r=R_M4+$EC/2,h=Height+$PC);
+    translate([0,0,-PC/2])
+      cylinder(r=R_M4+EC/2,h=Height+PC);
 
   }
 
@@ -196,10 +196,10 @@ module LegoBeam( Model ) {
   // Generate cross type hole
   module Cross() {
 
-    translate([-(Cross_Wid + $EC)/2, -R1, -$PC])
-      cube([Cross_Wid + $EC, R1*2, Height+$PC*2]);
-    translate([-R1, -(Cross_Wid+$EC)/2, -$PC])
-      cube([R1*2, Cross_Wid + $EC, Height+$PC*2]);
+    translate([-(Cross_Wid + EC)/2, -R1, -PC])
+      cube([Cross_Wid + EC, R1*2, Height+PC*2]);
+    translate([-R1, -(Cross_Wid+EC)/2, -PC])
+      cube([R1*2, Cross_Wid + EC, Height+PC*2]);
   }
 
 
@@ -207,8 +207,8 @@ module LegoBeam( Model ) {
   // Generate flat type hole
   module Flat() {
 
-    translate([-(Cross_Wid + $EC)/2, -R1, -$PC])
-      cube([Cross_Wid + $EC, R1*2, Height+$PC*2]);
+    translate([-(Cross_Wid + EC)/2, -R1, -PC])
+      cube([Cross_Wid + EC, R1*2, Height+PC*2]);
   }
 
 }
