@@ -30,10 +30,10 @@ hand2_base01a();
 
 if( debug > 0 ) {
   #translate([0,0,h_force]) difference() {
-    cylinder( d=d_bear_o, h=h_bear ); 
+    cylinder( d=d_bear_o, h=h_bear );
     translate([0,0,-ov])cylinder( d=d_bear_i, h=h_bear+2*ov ); 
   }
 }
 
 echo( "l_mou= ", l_mou, " l_mou_ext= ", l_mou_ext, "r_out_b= ", r_out_b );
-echo( "h_all= ", h_all, " r_bear_o= ", r_bear_o ); 
+echo( "h_all= ", h_all, " r_bear_o= ", r_bear_o );
