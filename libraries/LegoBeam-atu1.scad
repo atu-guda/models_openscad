@@ -8,8 +8,7 @@
 $fn= 43;
 
 /* [Extrusion:] */
-EC= 0.3;  // Extrusion Correction
-PC= 0.01; // Preview Coincient surface adjustment
+// PC= 0.01; // Preview Coincient surface adjustment
 
 // Hole sequence.
 // . = pinhole
@@ -31,20 +30,24 @@ PC= 0.01; // Preview Coincient surface adjustment
 // other - blank position.
 
 
-LegoBeam( "+o!xX*.-O3489+" );
+LegoBeam( "+o!xX*.-O3489sS+" );
 
-module LegoBeam( Model ) {
+module LegoBeam( Model, EC=0.01, PC=0.01 )
+{
   SegLen     = 8;            // [1:1:50]
-  R1         = 2.5 + EC/2;
+  R1         = 2.4  + EC/2;
   R2         = 3.05 + EC/2;
   Height     = 7.8;          // [4.0,7.8];
   Depth      = 0.85;
   Width      = 7.3;
-  W2         = Width/2;
-  Cross_Wid  = 2.0;
-  PinHoleR   = .5;
-  R_M3       = 1.4;
-  R_M4       = 1.9;
+  W2         = Width / 2;
+  Cross_Wid  = 1.75; // 2.0;
+  PinHoleR   = 0.6;
+  R_M3       = 1.3;
+  R_M4       = 1.8;
+  R_servo    = 2.3;
+  R2_servo   = 1.5;
+  H_servo    = 2.0;
   rot_h = [90,0,0];
 
   difference() {
@@ -120,6 +123,15 @@ module LegoBeam( Model ) {
         rotate(rot_h)
           translate(shift_y)
             Hole_M4();
+            
+      else if (Model[i] == "s")
+        translate(shift_z)
+          Hole_servo();
+
+      else if (Model[i] == "S")
+        rotate(rot_h)
+          translate(shift_y)
+            Hole_servo();
 
 
       else if (Model[i] == "O")
@@ -171,24 +183,27 @@ module LegoBeam( Model ) {
   //----------------------
   // Generate Round PinHole
   module PinHole() {
-
     translate([0,0,-PC/2])
       cylinder(r=PinHoleR+EC/2,h=Height+PC);
-
   }
 
   module Hole_M3() {
-
     translate([0,0,-PC/2])
       cylinder(r=R_M3+EC/2,h=Height+PC);
-
   }
 
   module Hole_M4() {
-
     translate([0,0,-PC/2])
       cylinder(r=R_M4+EC/2,h=Height+PC);
-
+  }
+  
+  module Hole_servo() {
+    translate([0,0,-PC/2])
+      cylinder(r=R_servo+EC/2,h=H_servo+PC);
+    translate([0,0,Height-H_servo+PC/2])
+      cylinder(r=R_servo+EC/2,h=H_servo+PC);
+    translate([0,0,-PC/2])
+      cylinder(r=R2_servo+EC/2,h=Height+PC);
   }
 
 

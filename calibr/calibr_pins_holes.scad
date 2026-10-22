@@ -10,7 +10,7 @@ difference() {
       xp = 5 + (i%5) * 13;
       yp = 5 + 10 * floor( i / 5 );
       echo( dia );
-      translate([xp,yp,1]) cylinder( d = dia, h=1 );
+      translate([xp,yp,1]) cylinder( d = dia, h=2 );
     }
   }
   xh = 5;
@@ -19,7 +19,7 @@ difference() {
       xh = 5 + (i%5) * 13;
       yh = 25 + 10 * floor( i / 5 );
       echo( dia );
-      translate([xh,yh,-ov]) cylinder( d = dia, h=2 );
+      translate([xh,yh,-ov]) cylinder( d = dia, h=3 );
     }
 }
 

@@ -12,7 +12,7 @@ module servo_gear( len, da )
       [ ((a%2)?r1:r2)*cos(a*ang1), ((a%2)?r1:r2)*sin(a*ang1) ],
   ];
 
-  linear_extrude( len )
+  linear_extrude( len+0.05 )
    polygon( points=po1, convexity=50 );
 }
 
