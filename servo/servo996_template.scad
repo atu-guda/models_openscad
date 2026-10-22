@@ -2,8 +2,10 @@ $fn = 52;
 use <atu_rounds.scad>
 
 
+ov = 0.1;
+ov2 = 2*ov;
 h  = 1.0;
-hm = h+0.1; // for better holes
+hm = h+ov2; // for better holes
 
 r2 = 0.8;
 
@@ -23,7 +25,7 @@ difference() {
   union() {
     translate([-L0L,-W2_2,0]) cube_round_xy(L0,W2,h, 3); 
   }
-  translate([-L3L,-W1_2,-0.5]) cube_round_xy(L3,W1,hm+2, 0.5); // main brick hole
+  translate([-L3L,-W1_2,-ov]) cube_round_xy(L3,W1,hm+ov, 0.5); // main brick hole
   // mounting holes targets
   translate([-L2L,-5.0,-0.05]) cylinder( r=r2, h=hm );
   translate([-L2L, 5.0,-0.05]) cylinder( r=r2, h=hm );
@@ -31,9 +33,10 @@ difference() {
   translate([ L2R, 5.0,-0.05]) cylinder( r=r2, h=hm );
   
   // indicators
-  translate([  0, 13, h-1]) cylinder( r=r2, h=2 );
-  translate([  0,-13, h-1]) cylinder( r=r2, h=2 );
-  translate([ 17,  0, h-1]) cylinder( r=r2, h=2 );
-  translate([-37,  0, h-1]) cylinder( r=r2, h=2 );
+  translate([  0, 13, -ov]) cylinder( r=r2, h=hm );
+  translate([  0,-13, -ov]) cylinder( r=r2, h=hm );
+  translate([ 17,  0, -ov]) cylinder( r=r2, h=hm );
+  translate([-37,  0, -ov]) cylinder( r=r2, h=hm );
   
 }
+
